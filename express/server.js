@@ -10,7 +10,7 @@ const bodyParser = require('body-parser');
 const db = require('./db')
 
 //Controllers
-const ServiceController = require('../controllers/serviceController')
+const ServiceController = require('./controllers/serviceController')
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors(), helmet())
@@ -18,9 +18,7 @@ app.use(bodyParser.json())
 
 const router = require('./routes/router')
 const apiPort = 8000
-app.listen(apiPort, () => {
 
-  console.log(`Server running on port ${apiPort}`)})
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 router.get('/', (req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/html' });
